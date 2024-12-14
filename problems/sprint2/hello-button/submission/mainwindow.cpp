@@ -11,3 +11,19 @@ MainWindow::MainWindow(QWidget* parent)
 MainWindow::~MainWindow() {
     delete ui;
 }
+
+void MainWindow::on_btn_setName_clicked(bool checked)
+{
+    QString
+        name = this->ui->le_name->text();
+
+    std::string
+        message_text = "Привет из Qt, " + name.toStdString() + "!";
+
+    QString
+        message = QString::fromStdString(message_text);
+
+    this->ui->lbl_result->setText(message);
+
+}
+
