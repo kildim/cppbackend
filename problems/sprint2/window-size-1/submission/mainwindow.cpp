@@ -16,6 +16,15 @@ MainWindow::~MainWindow()
 
 void MainWindow::UpdateSizeLabel() {
     // Доработайте этот метод.
-    auto new_text = std::to_string(width()) + "x" + std::to_string(height());
-    ui->lbl_size->setText(QString::fromStdString(new_text));
+    QLabel* label = ui->lbl_size;
+    int
+        width  = this->width(),
+        height = this->height();
+
+    auto new_text = std::to_string(width) + "x" + std::to_string(height);
+    label->setText(QString::fromStdString(new_text));
+
+    label->resize(width, height);
+    label->move(0, 0);
+
 }

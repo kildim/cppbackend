@@ -49,7 +49,7 @@ void MyWindowWithImage::FitToImage(QLabel *label)
         picture;
 
     picture
-        = ui->lbl_pixmap->pixmap();
+        = label->pixmap();
 
     picture_width
         = picture.width();
