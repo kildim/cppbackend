@@ -1,0 +1,39 @@
+2024-12-16 13:28:35,247 - aqt.main - INFO - installer 140704425276608 aqtinstall(aqt) v3.1.20 on Python 3.13.1 [CPython Clang 16.0.0 (clang-1600.0.26.4)]
+2024-12-16 13:28:35,247 - aqt.main - ERROR - installer 140704425276608 Invalid version or SimpleSpec: '6.X'
+See documentation at: https://python-semanticversion.readthedocs.io/en/latest/reference.html#semantic_version.SimpleSpec
+Examples:
+* "*": matches everything
+* "5": matches every version with major=5
+* "5.6": matches every version beginning with 5.6
+* "5.*.3": matches versions with major=5 and patch=3
+2024-12-16 13:28:58,747 - aqt.main - INFO - installer 140704425276608 aqtinstall(aqt) v3.1.20 on Python 3.13.1 [CPython Clang 16.0.0 (clang-1600.0.26.4)]
+2024-12-16 13:29:22,914 - aqt.metadata - DEBUG - metadata 140704425276608 Connection to 'https://download.qt.io' failed. Retrying with fallback 'https://mirror.netcologne.de/qtproject/'.
+2024-12-16 13:29:23,881 - aqt.installer - INFO - installer 140704425276608 Resolved spec '*' to 6.9.0
+2024-12-16 13:29:23,882 - aqt.helper - DEBUG - helper 140704425276608 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/qt/qt6_690_src_doc_examples/Updates.xml.sha256
+2024-12-16 13:29:47,921 - aqt.helper - DEBUG - helper 140704425276608 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/qt/qt6_690_src_doc_examples/Updates.xml.sha256
+2024-12-16 13:30:11,956 - aqt.helper - DEBUG - helper 140704425276608 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/qt/qt6_690_src_doc_examples/Updates.xml.sha256
+2024-12-16 13:30:36,001 - aqt.helper - DEBUG - helper 140704425276608 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/qt/qt6_690_src_doc_examples/Updates.xml.sha256
+2024-12-16 13:31:00,041 - aqt.helper - DEBUG - helper 140704425276608 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/qt/qt6_690_src_doc_examples/Updates.xml.sha256
+2024-12-16 13:31:24,081 - aqt.archives - WARNING - archives 140704425276608 Failed to download checksum for the file 'Updates.xml'. This may happen on unofficial mirrors.
+2024-12-16 13:31:48,118 - aqt.helper - WARNING - helper 140704425276608 Connection to 'https://download.qt.io' failed. Retrying with fallback 'https://mirrors.ukfast.co.uk/sites/qt.io/'.
+2024-12-16 13:31:48,119 - aqt.helper - DEBUG - helper 140704425276608 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/qt/qt6_690_src_doc_examples/Updates.xml.sha256
+2024-12-16 13:32:12,154 - aqt.helper - DEBUG - helper 140704425276608 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/qt/qt6_690_src_doc_examples/Updates.xml.sha256
+2024-12-16 13:32:36,196 - aqt.helper - DEBUG - helper 140704425276608 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/qt/qt6_690_src_doc_examples/Updates.xml.sha256
+2024-12-16 13:33:00,240 - aqt.helper - DEBUG - helper 140704425276608 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/qt/qt6_690_src_doc_examples/Updates.xml.sha256
+2024-12-16 13:33:24,284 - aqt.helper - DEBUG - helper 140704425276608 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/qt/qt6_690_src_doc_examples/Updates.xml.sha256
+2024-12-16 13:33:48,317 - aqt.archives - WARNING - archives 140704425276608 Failed to download checksum for the file 'Updates.xml'. This may happen on unofficial mirrors.
+2024-12-16 13:33:48,722 - aqt.main - ERROR - installer 140704425276608 Failed to locate XML data for Qt version '6.9.0'.
+==============================Suggested follow-up:==============================
+* Please use 'aqt list-qt all_os qt' to show versions available.
+2024-12-16 13:37:14,165 - aqt.metadata - DEBUG - metadata 140704425276608 Connection to 'https://download.qt.io' failed. Retrying with fallback 'https://mirrors.aliyun.com/qt/'.
+2024-12-16 13:37:51,721 - aqt.main - INFO - installer 140704425276608 aqtinstall(aqt) v3.1.20 on Python 3.13.1 [CPython Clang 16.0.0 (clang-1600.0.26.4)]
+2024-12-16 13:37:51,722 - aqt.helper - DEBUG - helper 140704425276608 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/qt/qt6_681_src_doc_examples/Updates.xml.sha256
+2024-12-16 13:38:15,781 - aqt.helper - DEBUG - helper 140704425276608 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/qt/qt6_681_src_doc_examples/Updates.xml.sha256
+2024-12-16 13:38:39,819 - aqt.helper - DEBUG - helper 140704425276608 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/qt/qt6_681_src_doc_examples/Updates.xml.sha256
+2024-12-16 13:39:23,696 - aqt.main - INFO - installer 140704425276608 aqtinstall(aqt) v3.1.20 on Python 3.13.1 [CPython Clang 16.0.0 (clang-1600.0.26.4)]
+2024-12-16 13:39:23,697 - aqt.helper - DEBUG - helper 140704425276608 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/qt/qt6_681_src_doc_examples/Updates.xml.sha256
+2024-12-16 13:39:47,752 - aqt.helper - DEBUG - helper 140704425276608 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/qt/qt6_681_src_doc_examples/Updates.xml.sha256
+2024-12-16 13:40:11,796 - aqt.helper - DEBUG - helper 140704425276608 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/qt/qt6_681_src_doc_examples/Updates.xml.sha256
+2024-12-16 13:40:35,837 - aqt.helper - DEBUG - helper 140704425276608 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/qt/qt6_681_src_doc_examples/Updates.xml.sha256
+2024-12-16 13:40:59,879 - aqt.helper - DEBUG - helper 140704425276608 Attempt to download checksum at https://download.qt.io/online/qtsdkrepository/all_os/qt/qt6_681_src_doc_examples/Updates.xml.sha256
+2024-12-16 13:41:23,923 - aqt.archives - WARNING - archives 140704425276608 Failed to download checksum for the file 'Updates.xml'. This may happen on unofficial mirrors.
