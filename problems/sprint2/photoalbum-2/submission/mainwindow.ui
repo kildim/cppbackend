@@ -78,6 +78,19 @@
    <string>Кошачий фотоальбом</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="lbl_img">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>150</y>
+      <width>58</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>
