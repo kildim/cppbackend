@@ -13,44 +13,66 @@
   <property name="windowTitle">
    <string>Ошибка</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>90</y>
-     <width>177</width>
-     <height>16</height>
-    </rect>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="144,0,233,0">
+   <property name="sizeConstraint">
+    <enum>QLayout::SetDefaultConstraint</enum>
    </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="text">
-    <string>Положите товары в корзину</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>150</y>
-     <width>86</width>
-     <height>32</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="text">
-    <string> Закрыть</string>
-   </property>
-  </widget>
+   <item>
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item alignment="Qt::AlignHCenter">
+    <widget class="QLabel" name="label">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Положите товары в корзину</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item alignment="Qt::AlignHCenter">
+    <widget class="QPushButton" name="pushButton">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string> Закрыть</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections>
