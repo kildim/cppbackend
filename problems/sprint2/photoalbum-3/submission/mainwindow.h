@@ -33,8 +33,14 @@ public:
     QString GetCurrentFile();
 
 
+private slots:
+    void on_btn_right_clicked();
+
+    void on_btn_left_clicked();
+
 private:
     void resizeEvent(QResizeEvent *event) override;
+    void UpdateEnabled();
 
 
 private:

@@ -6,7 +6,7 @@
 #include "ui_mainwindow.h"
 
 
-const QString IMAGE_PATH = ":/cats/images/cat1.jpg";
+const QString IMAGE_DIRECTORY_PATH = ":/cats/images/";
 
 
 // Функция подгоняет изображение под нужный размер окна.
@@ -32,8 +32,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    SetFolder(":/cats/images/");
-    //SetPixmap(IMAGE_PATH /* подставьте сюда путь до ресурса */);
+    SetFolder(IMAGE_DIRECTORY_PATH);
     FitImage();
 }
 
@@ -69,6 +68,7 @@ void MainWindow::SetFolder(const QString &d)
 {
     current_folder_ = d;
     cur_file_index_ = 0;
+    UpdateEnabled();
     SetPixmap(GetCurrentFile());
 }
 
@@ -93,4 +93,33 @@ void MainWindow::resizeEvent(QResizeEvent*)
     FitImage();
 }
 
+void MainWindow::UpdateEnabled()
+{
+    // Количество изображений в папке.
+    int max_images = QDir(current_folder_).entryList().size();
+
+    // Устанавливаем активность кнопки «влево».
+    ui->btn_left->setEnabled(cur_file_index_ > 0);
+
+    // Устанавливаем активность кнопки «вправо».
+    ui->btn_right->setEnabled(cur_file_index_ < max_images - 1);
+}
+
+
+
+void MainWindow::on_btn_right_clicked()
+{
+    ++cur_file_index_;
+    UpdateEnabled();
+    lbl_new_.setPixmap(GetCurrentFile());
+
+}
+
+
+void MainWindow::on_btn_left_clicked()
+{
+    --cur_file_index_;
+    UpdateEnabled();
+    lbl_new_.setPixmap(GetCurrentFile());
+}
 
