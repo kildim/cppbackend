@@ -37,10 +37,12 @@ public:
 
 private slots:
     void on_btn_right_clicked();
-
     void on_btn_left_clicked();
-    void slotCustomMenuRequested(QPoint pos);
 
+    void on_timer_timeout();
+
+    void slotCustomMenuRequested(QPoint pos);
+    void slotClickUpWindows(bool checked);
 private:
     void resizeEvent(QResizeEvent *event) override;
     void UpdateEnabled();
@@ -52,5 +54,7 @@ private:
     QPixmap active_pixmap;
     QString current_folder_;
     int cur_file_index_ = 0;
+    prac::QTimer timer_;
+    int period_;
 };
 #endif // MAINWINDOW_H

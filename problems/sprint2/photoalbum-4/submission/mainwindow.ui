@@ -177,31 +177,6 @@
    </widget>
    <addaction name="menu_mainwindow"/>
   </widget>
-  <action name="action">
-   <property name="text">
-    <string>Отключить</string>
-   </property>
-  </action>
-  <action name="action1">
-   <property name="text">
-    <string>1 секунда</string>
-   </property>
-  </action>
-  <action name="action5">
-   <property name="text">
-    <string>5 секунд</string>
-   </property>
-  </action>
-  <action name="action10">
-   <property name="text">
-    <string>10 секунд</string>
-   </property>
-  </action>
-  <action name="actionFFFF">
-   <property name="text">
-    <string>FFFF</string>
-   </property>
-  </action>
   <action name="action_up_windows">
    <property name="checkable">
     <bool>true</bool>

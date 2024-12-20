@@ -33,10 +33,14 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // Подключаем сигнал таймера к слоту on_timer_timeout.
+    connect(&timer_, &prac::QTimer::timeout, this, &MainWindow::on_timer_timeout);
+
     ui->menuBar->hide();
     this->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(this, &QMainWindow::customContextMenuRequested,
             this, &MainWindow::slotCustomMenuRequested);
+    connect(ui->action_up_windows, &QAction::toggled, this, &MainWindow::slotClickUpWindows);
 
     SetFolder(IMAGE_DIRECTORY_PATH);
     FitImage();
@@ -129,10 +133,21 @@ void MainWindow::on_btn_left_clicked()
     lbl_new_.setPixmap(GetCurrentFile());
 }
 
+void MainWindow::on_timer_timeout()
+{
+    //TODO
+}
+
 void MainWindow::slotCustomMenuRequested(QPoint pos) {
     // Метод ui->menu->popup открывает меню в заданном месте.
     // Используем метод mapToGlobal, чтобы преобразовать
     // координаты точки на форме в координаты точки экрана.
     ui->menu_mainwindow->popup(this->mapToGlobal(pos));
+}
+
+void MainWindow::slotClickUpWindows(bool checked)
+{
+    bool state = checked;
+    setWindowFlags(windowFlags().setFlag(Qt::WindowStaysOnTopHint, state));
 }
 
