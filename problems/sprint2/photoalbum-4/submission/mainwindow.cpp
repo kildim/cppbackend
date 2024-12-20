@@ -133,6 +133,6 @@ void MainWindow::slotCustomMenuRequested(QPoint pos) {
     // Метод ui->menu->popup открывает меню в заданном месте.
     // Используем метод mapToGlobal, чтобы преобразовать
     // координаты точки на форме в координаты точки экрана.
-    ui->menu->popup(this->mapToGlobal(pos));
+    ui->menu_mainwindow->popup(this->mapToGlobal(pos));
 }
 
