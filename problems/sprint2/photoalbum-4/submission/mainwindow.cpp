@@ -32,6 +32,12 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    ui->menuBar->hide();
+    this->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(this, &QMainWindow::customContextMenuRequested,
+            this, &MainWindow::slotCustomMenuRequested);
+
     SetFolder(IMAGE_DIRECTORY_PATH);
     FitImage();
 }
@@ -121,5 +127,12 @@ void MainWindow::on_btn_left_clicked()
     --cur_file_index_;
     UpdateEnabled();
     lbl_new_.setPixmap(GetCurrentFile());
+}
+
+void MainWindow::slotCustomMenuRequested(QPoint pos) {
+    // Метод ui->menu->popup открывает меню в заданном месте.
+    // Используем метод mapToGlobal, чтобы преобразовать
+    // координаты точки на форме в координаты точки экрана.
+    ui->menu->popup(this->mapToGlobal(pos));
 }
 

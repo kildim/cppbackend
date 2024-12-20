@@ -39,6 +39,7 @@ private slots:
     void on_btn_right_clicked();
 
     void on_btn_left_clicked();
+    void slotCustomMenuRequested(QPoint pos);
 
 private:
     void resizeEvent(QResizeEvent *event) override;
