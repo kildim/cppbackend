@@ -8,6 +8,8 @@
 #include <QMainWindow>
 #include <QLabel>
 #include <QDir>
+#include <prac/QTimer>
+#include <prac/QFileDialog>
 
 
 QT_BEGIN_NAMESPACE
