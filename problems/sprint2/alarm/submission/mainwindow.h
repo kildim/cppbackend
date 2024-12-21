@@ -24,9 +24,11 @@ private:
     Ui::MainWindow *ui;
     prac::QTimer timer_one_sec_{this};
     prac::QMediaPlayer player_{this};
+    bool is_alarm_on = false;
 
     void update_time_indicator();
-
+    void update_timeout_indicator();
 private slots:
     void on_timer_timeout ();
+    void on_pb_start_stop_clicked();
 };
