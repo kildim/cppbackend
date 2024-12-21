@@ -1,7 +1,3 @@
-// Возьмите решение предыдущей задачи
-// о фотоальбоме в качестве заготовки.
-
-// Решение предыдущей задачи
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -76,11 +72,16 @@ void MainWindow::FitImage()
 
 void MainWindow::SetFolder(const QString &d)
 {
+    std::pair<QPixmap, int> pair;
     current_folder_ = d;
     cur_file_index_ = 0;
-    UpdateEnabled();
-    SetPixmap(GetCurrentFile());
+    //UpdateEnabled();
+    //SetPixmap(GetCurrentFile());
+    pair = FindNextImage(cur_file_index_, +1);
+    active_pixmap = pair.first;
+    cur_file_index_ = pair.second;
 }
+
 
 QString MainWindow::GetCurrentFile()
 {
@@ -98,10 +99,13 @@ QString MainWindow::GetCurrentFile()
     return dir.filePath(list[file_index]);
 }
 
+
 void MainWindow::resizeEvent(QResizeEvent*)
 {
     FitImage();
 }
+
+/*
 
 void MainWindow::UpdateEnabled()
 {
@@ -115,22 +119,34 @@ void MainWindow::UpdateEnabled()
     ui->btn_right->setEnabled(cur_file_index_ < max_images - 1);
 }
 
-
+*/
 
 void MainWindow::on_btn_right_clicked()
 {
-    ++cur_file_index_;
-    UpdateEnabled();
-    lbl_new_.setPixmap(GetCurrentFile());
+    std::pair<QPixmap, int> pair;
 
+    ++cur_file_index_;
+    //UpdateEnabled();
+    //lbl_new_.setPixmap(GetCurrentFile());
+    pair = FindNextImage(cur_file_index_, +1);
+    active_pixmap = pair.first;
+    cur_file_index_ = pair.second;
+    FitImage();
 }
 
 
 void MainWindow::on_btn_left_clicked()
 {
+    std::pair<QPixmap, int> pair;
+
     --cur_file_index_;
-    UpdateEnabled();
-    lbl_new_.setPixmap(GetCurrentFile());
+    //UpdateEnabled();
+    //lbl_new_.setPixmap(GetCurrentFile());
+
+    pair = FindNextImage(cur_file_index_, +1);
+    active_pixmap = pair.first;
+    cur_file_index_ = pair.second;
+    FitImage();
 }
 
 void MainWindow::on_timer_timeout()
@@ -149,5 +165,31 @@ void MainWindow::slotClickUpWindows(bool checked)
 {
     bool state = checked;
     setWindowFlags(windowFlags().setFlag(Qt::WindowStaysOnTopHint, state));
+}
+
+QPixmap MainWindow::GetImageByPath(QString path) const {
+    QFileInfo file_info(path);
+    if (!file_info.isFile()) {
+        return {};
+    }
+    return QPixmap(path);
+}
+
+std::pair<QPixmap, int> MainWindow::FindNextImage(int start_index, int direction) const {
+    QDir dir(current_folder_);
+    auto file_list = dir.entryList();
+
+    int count = file_list.size();
+    int cur_image = start_index;
+
+    for(int steps = 0; steps < count; ++steps, cur_image += direction) {
+        cur_image = ((cur_image % count) + count) % count;
+
+        auto pixmap = GetImageByPath(dir.filePath(file_list[cur_image]));
+        if (!pixmap.isNull()) {
+            return {pixmap, cur_image};
+        }
+    }
+    return {{}, -1};
 }
 

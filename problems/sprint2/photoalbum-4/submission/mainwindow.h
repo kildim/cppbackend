@@ -8,6 +8,7 @@
 #include <QMainWindow>
 #include <QLabel>
 #include <QDir>
+#include <QPixmap>
 #include <prac/QTimer>
 #include <prac/QFileDialog>
 
@@ -34,6 +35,9 @@ public:
     void SetFolder(const QString& d);
     QString GetCurrentFile();
 
+
+    QPixmap GetImageByPath(QString path) const;
+    std::pair<QPixmap, int> FindNextImage(int start_index, int direction) const;
 
 private slots:
     void on_btn_right_clicked();
