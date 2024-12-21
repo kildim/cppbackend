@@ -40,6 +40,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     SetFolder(IMAGE_DIRECTORY_PATH);
     FitImage();
+
+    timer_.start(10);
 }
 
 MainWindow::~MainWindow()
@@ -151,7 +153,13 @@ void MainWindow::on_btn_left_clicked()
 
 void MainWindow::on_timer_timeout()
 {
-    //TODO
+    std::pair<QPixmap, int> pair;
+
+    pair = FindNextImage(cur_file_index_, +1);
+    active_pixmap = pair.first;
+    cur_file_index_ = pair.second;
+    FitImage();
+    ++cur_file_index_;
 }
 
 void MainWindow::slotCustomMenuRequested(QPoint pos) {
