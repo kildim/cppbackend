@@ -41,6 +41,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->action_1sec, &QAction::triggered, this, &MainWindow::slotClickTimer1sec);
     connect(ui->action_5sec, &QAction::triggered, this, &MainWindow::slotClickTimer5sec);
     connect(ui->action_10sec, &QAction::triggered, this, &MainWindow::slotClickTimer10sec);
+    connect(ui->action_close_mainwindow, &QAction::triggered, this, &MainWindow::slotClickCloseMainWindow);
+    connect(ui->action_choose_dir, &QAction::triggered, this, &MainWindow::slotClickSelectDirectory);
+    connect(ui->action_use_resources, &QAction::triggered, this, &MainWindow::slotClickUseResources);
 
 
     SetFolder(IMAGE_DIRECTORY_PATH);
@@ -207,6 +210,12 @@ void MainWindow::slotClickTimer10sec()
     updateFlagsInMenuTimer();
 }
 
+void MainWindow::slotClickUseResources()
+{
+    SetFolder(IMAGE_DIRECTORY_PATH);
+    FitImage();
+}
+
 void MainWindow::slotCustomMenuRequested(QPoint pos) {
     // Метод ui->menu->popup открывает меню в заданном месте.
     // Используем метод mapToGlobal, чтобы преобразовать
@@ -218,6 +227,22 @@ void MainWindow::slotClickUpWindows(bool checked)
 {
     bool state = checked;
     setWindowFlags(windowFlags().setFlag(Qt::WindowStaysOnTopHint, state));
+}
+
+void MainWindow::slotClickCloseMainWindow()
+{
+    this->close();
+}
+
+void MainWindow::slotClickSelectDirectory()
+{
+    QString dir = QFileDialog::getExistingDirectory(this,
+                                                    QString("Открыть папку"),
+                                                    QDir::currentPath(),
+                                                    QFileDialog::ShowDirsOnly
+                                                        | QFileDialog::DontResolveSymlinks);
+    SetFolder(dir);
+    FitImage();
 }
 
 QPixmap MainWindow::GetImageByPath(QString path) const {

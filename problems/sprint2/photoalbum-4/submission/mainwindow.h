@@ -48,9 +48,13 @@ private slots:
     void slotClickTimer1sec();
     void slotClickTimer5sec();
     void slotClickTimer10sec();
+    void slotClickUseResources();
 
     void slotCustomMenuRequested(QPoint pos);
     void slotClickUpWindows(bool checked);
+    void slotClickCloseMainWindow();
+    void slotClickSelectDirectory();
+
 private:
     void resizeEvent(QResizeEvent *event) override;
     void UpdateEnabled();
