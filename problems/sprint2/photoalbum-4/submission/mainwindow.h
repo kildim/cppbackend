@@ -44,12 +44,17 @@ private slots:
     void on_btn_left_clicked();
 
     void on_timer_timeout();
+    void slotClickTimer0sec();
+    void slotClickTimer1sec();
+    void slotClickTimer5sec();
+    void slotClickTimer10sec();
 
     void slotCustomMenuRequested(QPoint pos);
     void slotClickUpWindows(bool checked);
 private:
     void resizeEvent(QResizeEvent *event) override;
     void UpdateEnabled();
+    void updateFlagsInMenuTimer();
 
 
 private:

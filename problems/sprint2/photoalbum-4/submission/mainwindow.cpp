@@ -36,12 +36,15 @@ MainWindow::MainWindow(QWidget *parent)
     this->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(this, &QMainWindow::customContextMenuRequested,
             this, &MainWindow::slotCustomMenuRequested);
-    connect(ui->action_up_windows, &QAction::toggled, this, &MainWindow::slotClickUpWindows);
+    connect(ui->action_up_windows, &QAction::triggered, this, &MainWindow::slotClickUpWindows);
+    connect(ui->action_0sec, &QAction::triggered, this, &MainWindow::slotClickTimer0sec);
+    connect(ui->action_1sec, &QAction::triggered, this, &MainWindow::slotClickTimer1sec);
+    connect(ui->action_5sec, &QAction::triggered, this, &MainWindow::slotClickTimer5sec);
+    connect(ui->action_10sec, &QAction::triggered, this, &MainWindow::slotClickTimer10sec);
+
 
     SetFolder(IMAGE_DIRECTORY_PATH);
     FitImage();
-
-    timer_.start(10);
 }
 
 MainWindow::~MainWindow()
@@ -107,6 +110,24 @@ void MainWindow::resizeEvent(QResizeEvent*)
     FitImage();
 }
 
+void MainWindow::slotClickTimer0sec()
+{
+    timer_.stop();
+
+    period_ = 0;
+    updateFlagsInMenuTimer();
+    updateFlagsInMenuTimer();
+}
+
+void MainWindow::slotClickTimer1sec()
+{
+    timer_.stop();
+
+    period_ = 1000;
+    timer_.start(period_);
+    updateFlagsInMenuTimer();
+}
+
 /*
 
 void MainWindow::UpdateEnabled()
@@ -127,6 +148,9 @@ void MainWindow::on_btn_right_clicked()
 {
     std::pair<QPixmap, int> pair;
 
+    timer_.stop();
+    period_ = 0;
+
     ++cur_file_index_;
     //UpdateEnabled();
     //lbl_new_.setPixmap(GetCurrentFile());
@@ -141,11 +165,14 @@ void MainWindow::on_btn_left_clicked()
 {
     std::pair<QPixmap, int> pair;
 
+    timer_.stop();
+    period_ = 0;
+
     --cur_file_index_;
     //UpdateEnabled();
     //lbl_new_.setPixmap(GetCurrentFile());
 
-    pair = FindNextImage(cur_file_index_, +1);
+    pair = FindNextImage(cur_file_index_, -1);
     active_pixmap = pair.first;
     cur_file_index_ = pair.second;
     FitImage();
@@ -155,11 +182,29 @@ void MainWindow::on_timer_timeout()
 {
     std::pair<QPixmap, int> pair;
 
+    ++cur_file_index_;
     pair = FindNextImage(cur_file_index_, +1);
     active_pixmap = pair.first;
     cur_file_index_ = pair.second;
     FitImage();
-    ++cur_file_index_;
+}
+
+void MainWindow::slotClickTimer5sec()
+{
+    timer_.stop();
+
+    period_ = 5000;
+    timer_.start(period_);
+    updateFlagsInMenuTimer();
+}
+
+void MainWindow::slotClickTimer10sec()
+{
+    timer_.stop();
+
+    period_ = 10000;
+    timer_.start(period_);
+    updateFlagsInMenuTimer();
 }
 
 void MainWindow::slotCustomMenuRequested(QPoint pos) {
@@ -201,3 +246,9 @@ std::pair<QPixmap, int> MainWindow::FindNextImage(int start_index, int direction
     return {{}, -1};
 }
 
+void MainWindow::updateFlagsInMenuTimer() {
+    ui->action_0sec->setChecked(period_ == 0);
+    ui->action_1sec->setChecked(period_ == 1000);
+    ui->action_5sec->setChecked(period_ == 5000);
+    ui->action_10sec->setChecked(period_ == 10000);
+};
