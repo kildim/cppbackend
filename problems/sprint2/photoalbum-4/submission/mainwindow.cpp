@@ -86,8 +86,17 @@ void MainWindow::SetFolder(const QString &d)
     //UpdateEnabled();
     //SetPixmap(GetCurrentFile());
     pair = FindNextImage(cur_file_index_, +1);
-    active_pixmap = pair.first;
-    cur_file_index_ = pair.second;
+
+    if (!(pair.second == -1)) {
+        active_pixmap = pair.first;
+        cur_file_index_ = pair.second;
+        ui->btn_right->setEnabled(true);
+        ui->btn_left->setEnabled(true);
+    } else {
+        ui->btn_right->setEnabled(false);
+        ui->btn_left->setEnabled(false);
+    };
+
 }
 
 
@@ -236,7 +245,7 @@ void MainWindow::slotClickCloseMainWindow()
 
 void MainWindow::slotClickSelectDirectory()
 {
-    QString dir = QFileDialog::getExistingDirectory(this,
+    QString dir = prac::QFileDialog::getExistingDirectory(this,
                                                     QString("Открыть папку"),
                                                     QDir::currentPath(),
                                                     QFileDialog::ShowDirsOnly
