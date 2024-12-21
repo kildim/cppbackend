@@ -23,4 +23,10 @@ public:
 private:
     Ui::MainWindow *ui;
     prac::QTimer timer_one_sec_{this};
+    prac::QMediaPlayer player_{this};
+
+    void update_time_indicator();
+
+private slots:
+    void on_timer_timeout ();
 };
