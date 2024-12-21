@@ -247,21 +247,5 @@
     </hint>
    </hints>
   </connection>
-  <connection>
-   <sender>MainWindow</sender>
-   <signal>customContextMenuRequested(QPoint)</signal>
-   <receiver>menu</receiver>
-   <slot>showNormal()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>183</x>
-     <y>157</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>87</x>
-     <y>45</y>
-    </hint>
-   </hints>
-  </connection>
  </connections>
 </ui>
